@@ -1,0 +1,21 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env", 
+      {
+        "modules": "cjs",
+        "targets": {
+          "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
+        },
+        "corejs":2,
+        "useBuiltIns": "usage"
+      }
+    ],
+    "@babel/preset-react"
+  ],
+  "plugins": [
+    "@babel/plugin-transform-runtime",
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-syntax-dynamic-import"
+  ]
+}
