@@ -3,6 +3,8 @@
  * import 'core-js/modules/es6.set';
  * import 'core-js/modules/es6.map';
 */
+import 'core-js/modules/es6.set';
+import 'core-js/modules/es6.map';
 import './scss/index';
 import React from 'react';
 import ReactDOM from 'react-dom';
