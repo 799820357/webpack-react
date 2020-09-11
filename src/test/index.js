@@ -1,10 +1,10 @@
 /**
- * IE11-set,map报错
- * import 'core-js/modules/es6.set';
- * import 'core-js/modules/es6.map';
+ * IE11报错
+ * import 'core-js/es/promise';
+ * import 'core-js/es/set';
+ * import 'core-js/es/map';
 */
-import 'core-js/modules/es6.set';
-import 'core-js/modules/es6.map';
+
 import './scss/index';
 import React from 'react';
 import ReactDOM from 'react-dom';

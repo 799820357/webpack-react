@@ -3,23 +3,16 @@
     [
       "@babel/preset-env", 
       {
-        // "modules": "cjs",
         "targets": {
-          "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
-        }
-        // "corejs":3,
-        // "useBuiltIns": false
+          "browsers": ["> 1%", "last 2 versions", "not ie <= 9"]
+        },
+        "corejs":{ "version": 3, "proposals": true },
+        "useBuiltIns" : false
       }
     ],
     "@babel/preset-react"
   ],
   "plugins": [
-    [
-      "@babel/plugin-transform-runtime",
-      {
-        "corejs":3
-      }
-    ],
-    "@babel/plugin-syntax-dynamic-import"
+    "@babel/plugin-transform-runtime"
   ]
 }
