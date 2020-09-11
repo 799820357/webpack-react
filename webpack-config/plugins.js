@@ -9,6 +9,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 //css雪碧图
 const CssSpriteImage = require('roi-css-sprite');
+//
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 module.exports = projectInfo => {
     return [
         new CleanWebpackPlugin,
@@ -35,6 +37,7 @@ module.exports = projectInfo => {
             chunksSortMode: 'none',
             // 指定生成的html文件依赖的模板
             template: path.join(projectInfo.dirname, 'src', projectInfo.name, 'app.html'),
-        })
+        }),
+        // new BundleAnalyzerPlugin
     ];
 }

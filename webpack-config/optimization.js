@@ -3,7 +3,7 @@ module.exports = projectInfo => {
     return {
         splitChunks: {
             chunks: "all",
-            minSize: 30000, // 模块的最小体积
+            minSize: 0, // 模块的最小体积
             minChunks: 1, // 模块的最小被引用次数
             maxAsyncRequests: 5, // 按需加载的最大并行请求数
             maxInitialRequests: 3, // 一个入口最大并行请求数
