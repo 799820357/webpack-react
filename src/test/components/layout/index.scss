@@ -1,0 +1,19 @@
+.layout-board{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    .header-board{
+        height: 60px;
+    }
+    .content-board{
+        display: flex;
+        flex: 1;
+        .nav-board{
+            width: 150px;
+        }
+        .page-board{
+            flex: 1;
+        }
+    }
+}

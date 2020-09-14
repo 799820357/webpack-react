@@ -1,20 +1,21 @@
 /**
- * IE11报错
+ * IE11-报错
  * import 'core-js/es/promise';
  * import 'core-js/es/set';
  * import 'core-js/es/map';
 */
 
 import './scss/index';
-import React from 'react';
+import React,{useState} from 'react';
 import ReactDOM from 'react-dom';
-import {HashRouter, Route, Redirect} from 'react-router-dom';
-import useRouter from './js/hooks/router';
+import {HashRouter} from 'react-router-dom';
+import Layout from './components/layout';
 //app
 let App = () => {
-    let routers = useRouter(import('./js/pages'));
+    let [count,setCount] = useState(0);
     return <HashRouter>
-        { routers }
+        <span onClick={() => setCount(count + 1)}>测试</span>
+        <Layout {...{count}}/>
     </HashRouter>;    
 };
 //render
