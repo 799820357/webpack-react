@@ -1,19 +1,20 @@
-import React,{useMemo} from 'react';
+import React,{useEffect, useMemo} from 'react';
 import {Link,withRouter} from 'react-router-dom';
 import usePromise from 'use-promise';
 import './index.scss';
 export default props => {
-    let routerMap = usePromise(import('../../pages'));
+    console.log(props,'nav-component');
+    let pages = usePromise(import('../../pages'));
     let navList = useMemo(() => {
-        if(!routerMap) { return null }
-        return Object.keys(routerMap.default).map(key => {
+        if(!pages) { return null }
+        return Object.keys(pages.default).map(key => {
             return <li  key = {key}>
                 <Link to = {'/' + key}>{key}</Link>
             </li>
         });
-    },[routerMap]);
+    },[pages]);
     //render
-    return <ul className="nav-panel">
+    return <ul className="nav-board">
         {navList}
     </ul>
 }
