@@ -1,4 +1,9 @@
-
 export default {
-    a : 111
+    home : {
+        path : 'home',
+        default : true
+    },
+    detail : {
+        path : 'detail'
+    }
 }

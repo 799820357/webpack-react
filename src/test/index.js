@@ -9,19 +9,13 @@ import './scss/index';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {HashRouter, Route, Redirect} from 'react-router-dom';
-import('./js/pages/home').then(res => {
-    console.log(res)
-});
-import('./js/pages/detail').then(res => {
-    console.log(res)
-});
+import useRouter from './js/hooks/router';
+//app
 let App = () => {
-    let handleClick = () => {
-        import('./js/pages').then(res => {
-            console.log(res)
-        });
-    };
-    return <a onClick={handleClick}>点一下</a>
+    let routers = useRouter(import('./js/pages'));
+    return <HashRouter>
+        { routers }
+    </HashRouter>;    
 };
 //render
 ReactDOM.render(
