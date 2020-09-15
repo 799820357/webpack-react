@@ -2,5 +2,8 @@
     width: 150px;
     li{
         line-height: 30px;
+        &.on{
+            color: red;
+        }
     }
 }

@@ -16,9 +16,7 @@ export default (className,options) => {
             });
         };
         //是否添加样式
-        if(name.length){
-            setName(name.join(' ')); 
-        }
+        setName(name.join(' ')); 
     },[className,options]);
     //返回
     return name;
