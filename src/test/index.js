@@ -24,7 +24,6 @@ let App = props => {
         store,dispatch
     }}>
         <HashRouter>
-            <span onClick={() => setCount(count + 1)}>测试</span>
             <Layout/>
         </HashRouter>
     </context.Provider>   
