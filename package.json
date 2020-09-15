@@ -4,8 +4,8 @@
   "description": "基于webpack的react脚手架",
   "main": "index.js",
   "scripts": {
-    "testDev": "set NODE_ENV=mode:development,name:test&&webpack-dev-server",
-    "testPro": "set NODE_ENV=mode:production,name:test&&webpack"
+    "testDev": "cross-env NODE_ENV=mode:development,name:test webpack-dev-server",
+    "testPro": "cross-env NODE_ENV=mode:production,name:test webpack"
   },
   "repository": {
     "type": "git",
@@ -33,6 +33,7 @@
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^6.1.0",
     "core-js": "^3.6.5",
+    "cross-env": "^7.0.2",
     "css": "^3.0.0",
     "css-loader": "^4.3.0",
     "file-loader": "^6.1.0",
