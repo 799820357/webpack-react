@@ -1,42 +1,41 @@
 import dynamicComponent from 'dynamic-component';
 import usePromise from 'use-promise';
 import { Route, Redirect, withRouter} from 'react-router-dom';
-import React,{useMemo,useRef} from 'react';
-
+import React,{useEffect, useMemo, useRef,useState} from 'react';
+//页面组件
+let Page = props => {
+    let Component = useMemo(() => {
+        return dynamicComponent(import(`../../pages/${props.path}`));
+    },[props.path]);
+    //render
+    return <Component {...props}/>
+};
 export default (promise,props) => {
     let result = usePromise(promise);
-    let Page = useRef({});
     let component = useMemo(() => {
         if(!result){ return null }
         let defaultPage = null;
-        //判断当前页面是否为需要页面
-        if(Page.current.pathname != props.location.pathname){
-            Page.current = null;
-        }
-        //遍历
-        Object.keys(result.default).every(key => {
+        let allPages = Object.keys(result.default).map(key => {
             let item = result.default[key];
-            let pageKey = `/${key}`;
-            //判断默认页面
+            //判断默认页
             if(item.default){
-                defaultPage = <Route path='/' exact render={ r => <Redirect to = {pageKey}/>}/>;
+                defaultPage = <Route path='/' exact render={ r => <Redirect to={'/' + key}/>}/>
             };
-            //判断当前页面
-            if(!Page.current && props.location.pathname == pageKey){
-                Page.current = {
-                    pathname : props.location.pathname,
-                    component : dynamicComponent(import(`../../pages/${item.path}`))
-                }
-            }
-            //判断是否继续
-            return !defaultPage || !Page.current;
+            return <Route 
+                key={key} 
+                exact = {true} 
+                strict = {true}
+                path = {'/' + key} 
+                render = {info => {
+                    return <Page {...props} {...info} path = {item.path}/>
+                }}
+            />;
         });
         return <>
             {defaultPage}
-            {Page ? <Page.current.component {...props}/> : Page}
+            {allPages}
         </>
     },[result,props]);
-
     //render
-    return component;
+    return component
 };
