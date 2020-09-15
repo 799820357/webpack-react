@@ -3,7 +3,6 @@ import usePromise from 'use-promise';
 import './index.scss';
 import Item from './item';
 export default props => {
-    console.log(props,'nav-component');
     let pages = usePromise(import('../../pages'));
     let navList = useMemo(() => {
         if(!pages) { return null }

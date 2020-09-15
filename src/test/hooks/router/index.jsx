@@ -1,7 +1,7 @@
 import dynamicComponent from 'dynamic-component';
 import usePromise from 'use-promise';
 import { Route, Redirect} from 'react-router-dom';
-import React,{useMemo} from 'react';
+import React,{useEffect, useMemo} from 'react';
 //页面组件
 let Page = props => {
     let Component = useMemo(() => {
