@@ -1,4 +1,4 @@
-import React,{useMemo} from 'react';
+import React from 'react';
 import './index.scss';
 import dynamicComponent from 'dynamic-component';
 const Nav = dynamicComponent(import('../nav'));

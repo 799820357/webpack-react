@@ -6,7 +6,7 @@
 */
 
 import './scss/index';
-import React,{useState,useReducer, useEffect} from 'react';
+import React,{useReducer} from 'react';
 import ReactDOM from 'react-dom';
 import {HashRouter} from 'react-router-dom';
 import dynamicComponent from 'dynamic-component';

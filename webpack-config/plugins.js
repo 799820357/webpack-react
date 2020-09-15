@@ -12,21 +12,12 @@ const CssSpriteImage = require('roi-css-sprite');
 //
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 module.exports = projectInfo => {
-    return [
+    let result = [
         new CleanWebpackPlugin,
         new MiniCssExtractPlugin({
             filename: `css/${projectInfo.mode == 'production' ? '[name]-min' : '[name].[hash:6]'}.css`
         }),
-        //css雪碧图
-        new CssSpriteImage({
-            cssPath : path.join(projectInfo.dirname, 'dist', projectInfo.name,'css'),
-            matchReg:{
-                pattern:"\.\.\/images\/sprite\/"
-            },
-            spritesmithOptions : {
-                algorithm : 'left-right'
-            }
-        }),
+        
         //压缩css
         new OptimizeCSSAssetsPlugin,
         //html
@@ -40,4 +31,20 @@ module.exports = projectInfo => {
         }),
         // new BundleAnalyzerPlugin
     ];
+    //生产模式
+    if(projectInfo.mode == 'production'){
+        result.push(
+            //css雪碧图
+            new CssSpriteImage({
+                cssPath : path.join(projectInfo.dirname, 'dist', projectInfo.name,'css'),
+                matchReg:{
+                    pattern:"\.\.\/images\/sprite\/"
+                },
+                spritesmithOptions : {
+                    algorithm : 'left-right'
+                }
+            })
+        );
+    };
+    return result;
 }
