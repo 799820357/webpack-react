@@ -1,7 +1,7 @@
 import './index.scss';
 import React from 'react';
 import useRouter from '../../hooks/router';
-const View = props => {
+export default props => {
     //页面
     let pages = useRouter(import('../../pages'),props);
     //render
@@ -9,4 +9,3 @@ const View = props => {
         {pages}
     </div>;
 };
-export default View;

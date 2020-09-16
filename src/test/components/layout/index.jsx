@@ -4,7 +4,7 @@ import dynamicComponent from 'dynamic-component';
 const Nav = dynamicComponent(import('../nav'));
 const Header = dynamicComponent(import('../header'));
 const Page = dynamicComponent(import('../page'));
-const View = props => {
+export default props => {
     //render
     return <div className="layout-board">
         <Header {...props}/>
@@ -13,5 +13,4 @@ const View = props => {
             <Page {...props}/>
         </div>
     </div>
-}
-export default View;
+};

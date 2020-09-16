@@ -2,7 +2,7 @@ import React,{ useMemo} from 'react';
 import usePromise from 'use-promise';
 import './index.scss';
 import Item from './item';
-const View = () => {
+export default () => {
     let pages = usePromise(import('../../pages'));
     let navList = useMemo(() => {
         if(!pages) { return null }
@@ -17,4 +17,3 @@ const View = () => {
         {navList}
     </ul>
 };
-export default View;

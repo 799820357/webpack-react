@@ -23,6 +23,7 @@ module.exports = {
         //变量未引用的警告
         "no-unused-vars": [1],
         //prop-types
-        "react/prop-types": [0]
+        "react/prop-types": [0],
+        "react/display-name": [0]
     }
 };

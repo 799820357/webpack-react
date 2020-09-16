@@ -1,4 +1,4 @@
-import React,{ useMemo } from 'react';
+import React from 'react';
 import usePromise from 'use-promise';
 //动态组件
 export default (promise) => {
