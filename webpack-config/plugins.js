@@ -41,7 +41,7 @@ module.exports = projectInfo => {
                     pattern:"\.\.\/images\/sprite\/"
                 },
                 spritesmithOptions : {
-                    algorithm : 'left-right'
+                    algorithm : 'top-down'//'left-right'
                 }
             })
         );
