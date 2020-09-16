@@ -44,7 +44,7 @@ module.exports = projectInfo => {
                   outputPath: 'images/',// 指定打包后的图片位置
                   //name:'[path][name].[ext]
                   name: res => {
-                    return res.split('images\\')[1].replace(/\\/g,'/');
+                    return res.split('images');
                   },
                   publicPath:'../images'
                 }
