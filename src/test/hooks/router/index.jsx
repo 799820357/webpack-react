@@ -1,7 +1,7 @@
 import dynamicComponent from 'dynamic-component';
 import usePromise from 'use-promise';
 import { Route, Redirect} from 'react-router-dom';
-import React,{useEffect, useMemo} from 'react';
+import React,{useMemo} from 'react';
 //页面组件
 let Page = props => {
     let Component = useMemo(() => {
@@ -20,7 +20,7 @@ export default (promise,props) => {
             //判断默认页
             if(item.default){
                 defaultPage = <Route path='/' exact render={ r => <Redirect to={'/' + key}/>}/>
-            };
+            }
             return <Route 
                 key={key} 
                 exact = {true} 

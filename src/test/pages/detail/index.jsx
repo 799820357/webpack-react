@@ -1,4 +1,5 @@
 import React from 'react';
-export default props => {
-    return '这里是详情页';
-}
+const View = () => {
+    return <div>这里是详情页</div>;
+};
+export default View;

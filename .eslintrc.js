@@ -1,38 +1,28 @@
 module.exports = {
-  "parser": "babel-eslint",
-  "env": {
-      "browser": true,
-      "jquery": true,
-      "node": true,
-      "amd": true,
-      "es6": true,
-      "commonjs": true
-  },
-  "globals": {
-      "Atomics": "readonly",
-      "SharedArrayBuffer": "readonly"
-  },
-  "parserOptions": {
-      "ecmaFeatures": {
-          "jsx": true
-      },
-      "ecmaVersion": 2018,
-      "sourceType": "module"
-  },
-  "plugins": [
-      "react"
-  ],
-  "rules": {
-      "no-empty": [
-          "error",
-          {
-              "allowEmptyCatch": true
-          }
-      ],
-      "no-unused-vars": "off",
-      "react/jsx-uses-react": 2,
-      "no-console": "off",
-      "no-func-assign": "off",
-      "no-useless-escape": "off"
-  }
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        //空行不能够超过2行
+        "no-multiple-empty-lines": [1, { "max": 2 }],
+        //变量未引用的警告
+        "no-unused-vars": [1],
+        //prop-types
+        "react/prop-types": [0]
+    }
 };
