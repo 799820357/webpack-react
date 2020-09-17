@@ -9,7 +9,7 @@ module.exports = projectInfo => {
             'use-promise' : path.join(hooksPath,'promise'),
             'use-class-name' : path.join(hooksPath,'class-name'),
             'use-scroll-info' : path.join(hooksPath,'scroll-info'),
-            'element-client-rect' : path.join(hooksPath,'element-client-rect')
+            'use-element-client-rect' : path.join(hooksPath,'element-client-rect')
         }
     }
 };

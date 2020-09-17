@@ -1,6 +1,6 @@
 import React,{ useRef } from 'react';
 import useScrollInfo from 'use-scroll-info';
-import useElementClientRect from 'element-client-rect';
+import useElementClientRect from 'use-element-client-rect';
 import './index.scss';
 export default () => {
     let dom = useRef(null);
