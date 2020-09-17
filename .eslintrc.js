@@ -24,6 +24,8 @@ module.exports = {
         "no-unused-vars": [1],
         //prop-types
         "react/prop-types": [0],
-        "react/display-name": [0]
+        //声明名称
+        "react/display-name": [0],
+        "no-undef":[0]
     }
 };
