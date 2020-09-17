@@ -5,7 +5,8 @@ module.exports = projectInfo => {
         alias : {
             'dynamic-component' : path.join(projectInfo.dirname, 'common','components','dynamic'),
             'use-promise' : path.join(projectInfo.dirname, 'common','hooks','promise'),
-            'use-class-name' : path.join(projectInfo.dirname, 'common','hooks','class-name')
+            'use-class-name' : path.join(projectInfo.dirname, 'common','hooks','class-name'),
+            'use-scroll-info' : path.join(projectInfo.dirname, 'common','hooks','scroll-info')
         }
     }
 };
