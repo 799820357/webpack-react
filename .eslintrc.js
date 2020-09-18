@@ -26,6 +26,7 @@ module.exports = {
         "react/prop-types": [0],
         //声明名称
         "react/display-name": [0],
-        "no-undef":[0]
+        "no-undef": [0],
+        "no-useless-escape": [1]
     }
 };

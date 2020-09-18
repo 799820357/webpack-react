@@ -21,6 +21,9 @@ export default () => {
             ajax : 'json',
             id : 'ad'
         },
+        progress(...arg){
+            console.log(arg,'progress');
+        },
         beforeSend(xhr){
             console.log(xhr,'before');
         },

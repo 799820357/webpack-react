@@ -11,12 +11,16 @@ const initSetting = {
     data: null,
     //发送前的回调
     beforeSend: null,
+    //上传进度回调
+    progress: null,
     //发送成功的回调
     success: null,
     //发送失败的回调
     error: null,
     //发送完成的回调
     complete: null,
+    //是否需要转化数据
+    processData: true,
     //header-content-type
     contentType: "application/x-www-form-urlencoded; charset=UTF-8",
     //header-accepts
@@ -72,9 +76,9 @@ let ajax = options => {
     let {
         url, type, dataType, 
         context, timeout, beforeSend, 
-        success, error, complete, 
+        success, error, complete, progress,
         async, data, contentType, 
-        accepts, cache
+        accepts, cache, processData
     } = options;
     //xhr
     let xhr = new window.XMLHttpRequest();
@@ -91,9 +95,12 @@ let ajax = options => {
             '_' : parseInt((+ new Date) * Math.random())
         })
     }
-    //get方式参数处理
-    if(type == 'GET' && data){
+    //转化参数
+    if(processData){
         data = dataParseParams(data);
+    }
+    //get方式参数处理
+    if(type == 'GET' && data && processData){
         if(/\?/.test(url)){
             url += /\?$/.test(url) ? data : '&' + data;
         }else{
@@ -109,7 +116,7 @@ let ajax = options => {
             header['X-Requested-With'] = 'XMLHttpRequest';
         }
         //type
-        if(type == 'POST'){
+        if(type == 'POST' && contentType){
             header['Content-type'] = contentType;   
         }
         //data-type
@@ -121,8 +128,6 @@ let ajax = options => {
             xhr.setRequestHeader(key,header[key]);
         })
     }
-    //before-send
-    typeof beforeSend == 'function' && beforeSend.call(context,xhr);
     //readystatechange
     // 协议
     let protocol = /^([\w-]+:)\/\//.test(url) ? RegExp.$1 : window.location.protocol;
@@ -151,6 +156,16 @@ let ajax = options => {
     xhr.abort = (...arg) => {
         abort.apply(xhr,arg);
         ajaxError(arg[0] || 'abort', xhr, context, error, complete,timer);
+    }
+    //before-send
+    typeof beforeSend == 'function' && beforeSend.call(context,xhr);
+    //上传
+    try{
+        xhr.upload.onprogress = event => {
+            typeof progress == 'function' && progress.call(context,event,xhr);
+        };
+    }catch(e){
+        console.warn(e);
     }
     //发送
     xhr.send(data);
