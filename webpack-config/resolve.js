@@ -5,11 +5,13 @@ module.exports = projectInfo => {
     return  {
         extensions : ['.jsx', '.js', '.scss', '.css'],
         alias : {
+            'utils' :  path.join(projectInfo.dirname, 'common','utils'),
             'dynamic-component' : path.join(componentPath,'dynamic'),
             'use-promise' : path.join(hooksPath,'promise'),
             'use-class-name' : path.join(hooksPath,'class-name'),
             'use-scroll-info' : path.join(hooksPath,'scroll-info'),
-            'use-element-client-rect' : path.join(hooksPath,'element-client-rect')
+            'use-element-client-rect' : path.join(hooksPath,'element-client-rect'),
+            'use-ajax' : path.join(hooksPath,'ajax')
         }
     }
 };
