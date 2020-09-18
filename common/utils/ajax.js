@@ -171,7 +171,7 @@ let jsonp = options => {
     let timer = null;
     let { 
         url, jsonpCallback, jsonp, data, cache,
-        context, error, success, complete, timeout
+        context, error, beforeSend, success, complete, timeout
     } = options;
     jsonp = jsonp || 'callback';
     jsonpCallback = jsonpCallback || 'jsonpCallback' + parseInt((+ new Date) * Math.random());
@@ -212,6 +212,8 @@ let jsonp = options => {
         }
         ajaxError(arg[0] || 'abort', xhr, context, error, complete, timer);
     }
+    //before-send
+    typeof beforeSend == 'function' && beforeSend.call(context,xhr);
     //插入-删除标签
     body.appendChild(script);
     body.removeChild(script);
