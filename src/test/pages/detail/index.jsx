@@ -1,4 +1,4 @@
-import React,{ useRef } from 'react';
+import React,{ useRef,useState } from 'react';
 import useScrollInfo from 'use-scroll-info';
 import useElementClientRect from 'use-element-client-rect';
 import useAjax from 'use-ajax';
@@ -9,34 +9,42 @@ export default () => {
     let scrollInfo = useScrollInfo(dom,50);
     //获取element位置大小
     let elementClientRect = useElementClientRect(dom,0);
+    //ajax
+    let [ajaxRes,setAjaxRes] = useState(null);
     //获取ajax
-    let ajData = useAjax({
-        // url : '/widget',
-        url : 'https://event.games.wanmei.com/m/accumulator/m_xmz/booking/getNum',
+    useAjax({
+        url : '/widget',
         type : 'get',
-        // timeout : 1,
-        // cache : true,
-        dataType : 'jsonp',
+        dataType : 'json',
         data : {
             ajax : 'json',
             id : 'ad'
         },
+        context : {a :1},
         progress(...arg){
-            console.log(arg,'progress');
+            // console.log(arg,'progress');
         },
         beforeSend(xhr){
-            console.log(xhr,'before');
+            // console.log(xhr,'before');
         },
         success(res,xhr){
-            console.log(res,xhr,'success')
+            // console.log(res,xhr,'success')
         },
         error(res,xhr){
-            console.log(res,xhr,'error')
+            // console.log(res,xhr,'error')
         },
         complete(res,xhr){
-            console.log(res,xhr,'complete')
+            // console.log(res,xhr,'complete')
         }
-    });
+    },0).then((res) => {
+        if(ajaxRes != res){
+            setAjaxRes(res);
+        } 
+    },res => {
+        if(ajaxRes != res){
+            setAjaxRes(res);
+        }
+    })
     //样式
     let style = {
         height : 2000,
@@ -53,6 +61,9 @@ export default () => {
             </dd>
             <dd>
                 位置，大小信息：{elementClientRect ? JSON.stringify(elementClientRect) : ''}
+            </dd>
+            <dd>
+                ajax信息: {ajaxRes ? JSON.stringify(ajaxRes.payload) : null}
             </dd>
         </dl>
     </div>;

@@ -148,7 +148,7 @@ let ajax = options => {
             }
         } else {
             //失败回调
-            ajaxError('error', xhr, context, error, complete,timer);
+            ajaxError(xhr.statusText || 'error', xhr, context, error, complete,timer);
         }
     }
     //改写abort
@@ -179,7 +179,7 @@ let ajax = options => {
     return xhr;
 };
 //jsonp
-let jsonp = options => {
+let ajaxJsonp = options => {
     let xhr = {
         abort : null
     };
@@ -243,10 +243,11 @@ let jsonp = options => {
 //返回
 export default options => {
     if(!options || !options.url){ 
-        console.warn('请设置request-url')
+        let {context,error, complete} = options;
+        ajaxError('请设置request-url', null, context, error, complete, null);
         return
     }
     let setting = Object.assign(initSetting,options);
     let {dataType} = setting;
-    return dataType.toLocaleLowerCase() == 'jsonp' ? jsonp(setting) : ajax(setting);
+    return dataType.toLocaleLowerCase() == 'jsonp' ? ajaxJsonp(setting) : ajax(setting);
 }
