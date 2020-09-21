@@ -3,6 +3,6 @@ import './index.scss';
 export default () => {
     //render
     return <div className="header-board">
-        这里是头部
+        <h1>roi-react</h1>
     </div>
 };

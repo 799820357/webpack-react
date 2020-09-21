@@ -8,8 +8,9 @@ export default () => {
         if(!pages) { return null }
         return Object.keys(pages.default).map(key => {
             return <Item key = {key} {...{
-                path : `/${key}`
-            }}>{key}</Item>
+                path : `/${key}`,
+                className : key
+            }}><b/>{key}</Item>
         });
     },[pages]);
     //render

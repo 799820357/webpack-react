@@ -1,19 +1,32 @@
 .nav-board{
     width: 150px;
+    background: #ffffff;
     li{
-        line-height: 30px;
-        padding: 0 0 0 20px;
-        background-repeat: no-repeat;
-        background-color: blue;
-        margin: 0 0 5px;
+        display: flex;
+        align-items: center;
+        height: 40px;
+        border-bottom: 1px solid #333333;
+        cursor: pointer;
+        b{
+            width: 22px;
+            height: 22px;
+            background-repeat: no-repeat;
+            margin: 0 10px;
+        }
         &.on{
             color: red;
         }
         &:nth-child(1){
-            background-image: url(../../images/sprite/nav/1.png);
+            b{
+                background-image: url(../../images/sprite/nav/1.png);
+            }
+            
         }
         &:nth-child(2){
-            background-image: url(../../images/sprite/nav/2.png);
+            b{
+                background-image: url(../../images/sprite/nav/3.png);
+            }
+           
         }
     }
 }
