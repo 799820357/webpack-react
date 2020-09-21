@@ -13,7 +13,9 @@ export default promise => {
             if(!isMount.current){ return }
             console.warn('error:' + res);
         });
-        //卸载
+    },[promise]);
+    //卸载
+    useEffect(() => {
         return () => {
             isMount.current = false;
         }

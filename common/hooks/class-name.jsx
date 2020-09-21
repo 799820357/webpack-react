@@ -14,7 +14,7 @@ export default (className,options) => {
                     name.splice(index,1);
                 }
             });
-        };
+        }
         //是否添加样式
         setName(name.join(' ')); 
     },[className,options]);
