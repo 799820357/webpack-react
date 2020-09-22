@@ -14,7 +14,7 @@ export default () => {
     //获取ajax
     useAjax({
         url : '/widget',
-        type : 'get',
+        type : 'post',
         dataType : 'json',
         data : {
             ajax : 'json',

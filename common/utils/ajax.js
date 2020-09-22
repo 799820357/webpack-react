@@ -22,7 +22,7 @@ const initSetting = {
     //是否需要转化数据
     processData: true,
     //header-content-type
-    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+    contentType: '',
     //header-accepts
     accepts: {
         script: 'text/javascript, application/javascript',
@@ -116,8 +116,10 @@ let ajax = options => {
             header['X-Requested-With'] = 'XMLHttpRequest';
         }
         //type
-        if(type == 'POST' && contentType){
-            header['Content-type'] = contentType;   
+        if(contentType){
+            header['Content-type'] = contentType;  
+        } else if(type == 'POST' && contentType === ''){
+            header['Content-type'] = 'application/x-www-form-urlencoded; charset=UTF-8';   
         }
         //data-type
         if(accepts[dataType]){
