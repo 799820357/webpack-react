@@ -156,6 +156,7 @@ let ajax = options => {
     //改写abort
     let abort = xhr.abort;
     xhr.abort = (...arg) => {
+        xhr.onreadystatechange = () => {};
         abort.apply(xhr,arg);
         ajaxError(arg[0] || 'abort', xhr, context, error, complete,timer);
     }

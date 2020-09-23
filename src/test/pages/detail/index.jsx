@@ -1,4 +1,4 @@
-import React,{ useRef,useState } from 'react';
+import React,{ useEffect, useRef,useState } from 'react';
 import useScrollInfo from 'use-scroll-info';
 import useElementClientRect from 'use-element-client-rect';
 import useAjax from 'use-ajax';
@@ -19,22 +19,6 @@ export default () => {
         data : {
             ajax : 'json',
             id : 'ad'
-        },
-        context : {a :1},
-        progress(...arg){
-            // console.log(arg,'progress');
-        },
-        beforeSend(xhr){
-            // console.log(xhr,'before');
-        },
-        success(res,xhr){
-            // console.log(res,xhr,'success')
-        },
-        error(res,xhr){
-            // console.log(res,xhr,'error')
-        },
-        complete(res,xhr){
-            // console.log(res,xhr,'complete')
         }
     },0).then((res) => {
         if(ajaxRes != res){
