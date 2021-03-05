@@ -2,9 +2,7 @@ import {ajax} from 'utils';
 import {useEffect,useState,useRef} from 'react';
 export default (options,update = 0) => {
     //返回值
-    let [promise,setPromise] = useState({
-        then : () => {}
-    });
+    let [promise,setPromise] = useState(new Promise(() => {}));
     //xhr
     let xhr = useRef(null);
     //加载
