@@ -19,5 +19,5 @@ export default (className,options) => {
         setName(name.join(' ')); 
     },[className,options]);
     //返回
-    return className || name;
+    return name || className;
 }
