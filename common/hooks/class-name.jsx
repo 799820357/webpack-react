@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useMemo } from 'react';
 export default (className,options) => {
-    let [name,setName] = useState(null);
-    useEffect(() => {
-        let name = className ? className.split(' ') : [];
+    return useMemo(() => {
+        let name = className ? className.trim().split(' ') : [];
         if(typeof options == 'string'){
             name.push(options);
         }else if(typeof options == 'object'){
@@ -16,8 +15,6 @@ export default (className,options) => {
             });
         }
         //是否添加样式
-        setName(name.join(' ')); 
-    },[className,options]);
-    //返回
-    return name || className;
+        return name.join(' ')
+    },[className,JSON.stringify(options)]);
 }
