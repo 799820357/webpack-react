@@ -1,26 +1,29 @@
 import {useEffect,useRef,useState} from 'react';
 export default promise => {
-    let isMount = useRef(true);
-    let [result,setResult] = useState(undefined);
+    let cancelRef = useRef(null);
+    let [result,setResult] = useState({
+        type : 'pending '
+    });
     //加载
     useEffect(() => {
-        promise.then(res => {
-            if(!isMount.current){ return }
-            setResult(() => {
-                return res;
-            });
+        let cancelPromise = new Promise((resolve,reject) => {
+            cancelRef.current = reject
+        })
+        Promise.race([promise,cancelPromise]).then(res => {
+            setResult({
+                type : 'success',
+                payload : res
+            })
         },res => {
-            if(!isMount.current){ return }
-            console.warn('error:' + res);
-        });
-    },[promise]);
-    //卸载
-    useEffect(() => {
+            setResult({
+                type : 'error',
+                payload : res
+            })
+        })
         return () => {
-            isMount.current = false;
+            cancelRef.current && cancelRef.current('hooks-cancel')
         }
-    },[]);
-
+    },[promise]);
     //返回值
     return result;
 }
