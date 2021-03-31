@@ -2,13 +2,18 @@ import {useEffect,useRef,useState} from 'react';
 export default promise => {
     let cancelRef = useRef(null);
     let [result,setResult] = useState({
-        type : 'pending '
+        type : 'pending'
     });
     //加载
     useEffect(() => {
         let cancelPromise = new Promise((resolve,reject) => {
             cancelRef.current = reject
         })
+        if(result.type != 'pending'){
+            setResult({
+                type : 'pending'
+            })
+        }
         Promise.race([promise,cancelPromise]).then(res => {
             setResult({
                 type : 'success',

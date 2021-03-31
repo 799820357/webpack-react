@@ -12,9 +12,11 @@ export default (options,update = 0) => {
         //设置返回值
         xhr.current = ajax(Object.assign(options,{
             beforeSend : () => {
-                setResult({
-                    type : 'pending'
-                })
+                if(result.type != 'pending'){
+                    setResult({
+                        type : 'pending'
+                    })
+                }
             },
             error : res => {
                 setResult({
@@ -27,6 +29,9 @@ export default (options,update = 0) => {
                     type : 'success',
                     payload : res
                 })
+            },
+            complete : res => {
+                xhr.current = null
             }
         }));
         return () => {
