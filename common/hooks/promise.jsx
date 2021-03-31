@@ -19,11 +19,13 @@ export default promise => {
                 type : 'success',
                 payload : res
             })
+            cancelRef.current = null
         },res => {
             setResult({
                 type : 'error',
                 payload : res
             })
+            cancelRef.current = null
         })
         return () => {
             cancelRef.current && cancelRef.current('hooks-cancel')
